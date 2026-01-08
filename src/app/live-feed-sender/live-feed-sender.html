@@ -1,1 +1,22 @@
-<p>live-feed-sender works!</p>
+<app-live-feed-sender>
+  <header>
+    <h1>Camera</h1>
+    <h2>Fill the details to enable</h2>
+  </header>
+  <main>
+    <section>
+        <form>
+            <label>
+                First Name
+                <input name="firstName" id="firstName" [(ngModel)]="firstName"
+                 required minlength="3" maxlength="10">
+            </label>
+              <label>
+                Last Name
+                <input name="lastName" id="lastName" [(ngModel)]="lastName"
+                 required minlength="3" maxlength="10">
+            </label>
+        </form>
+    </section>
+  </main>
+</app-live-feed-sender>
