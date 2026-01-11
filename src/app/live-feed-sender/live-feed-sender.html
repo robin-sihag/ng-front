@@ -1,22 +1,35 @@
 <app-live-feed-sender>
-  <header>
-    <h1>Camera</h1>
-    <h2>Fill the details to enable</h2>
-  </header>
-  <main>
-    <section>
-        <form>
-            <label>
-                First Name
-                <input name="firstName" id="firstName" [(ngModel)]="firstName"
-                 required minlength="3" maxlength="10">
-            </label>
-              <label>
-                Last Name
-                <input name="lastName" id="lastName" [(ngModel)]="lastName"
-                 required minlength="3" maxlength="10">
-            </label>
-        </form>
-    </section>
-  </main>
+    <header>
+        <h1>Camera</h1>
+        <h2>Fill the details to enable</h2>
+    </header>
+    <main>
+        <section>
+            <form #liveForm="ngForm" novalidate (ngSubmt)="onSubmit(liveForm)">
+                <label>
+                    First Name
+                    <input name="firstName" id="firstName" [(ngModel)]="firstName" required minlength="3"
+                        maxlength="10">
+                </label>
+                <label>
+                    Last Name
+                    <input name="lastName" id="lastName" [(ngModel)]="lastName" required minlength="3" maxlength="10">
+                </label>
+                <label>
+                    Your Message
+                    <input name="greetMessage" id="greetMessage" [(ngModel)]="greetMessage" required minlength="3"
+                        maxlength="1024">
+                </label>
+                <button type="submit" [disabled=]"">
+                    Start
+                </button>
+            </form>
+            <!-- Additional help -->
+            <aside id="login-help" class="help-section">
+                Need help? <a href="/support">Contact support</a>
+            </aside>
+        </section>
+        </section>
+
+    </main>
 </app-live-feed-sender>
