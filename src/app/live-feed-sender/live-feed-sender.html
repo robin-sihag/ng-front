@@ -1,35 +1,127 @@
-<app-live-feed-sender>
-    <header>
-        <h1>Camera</h1>
-        <h2>Fill the details to enable</h2>
-    </header>
-    <main>
-        <section>
-            <form #liveForm="ngForm" novalidate (ngSubmt)="onSubmit(liveForm)">
-                <label>
-                    First Name
-                    <input name="firstName" id="firstName" [(ngModel)]="firstName" required minlength="3"
-                        maxlength="10">
-                </label>
-                <label>
-                    Last Name
-                    <input name="lastName" id="lastName" [(ngModel)]="lastName" required minlength="3" maxlength="10">
-                </label>
-                <label>
-                    Your Message
-                    <input name="greetMessage" id="greetMessage" [(ngModel)]="greetMessage" required minlength="3"
-                        maxlength="1024">
-                </label>
-                <button type="submit" [disabled=]"">
-                    Start
-                </button>
-            </form>
-            <!-- Additional help -->
-            <aside id="login-help" class="help-section">
-                Need help? <a href="/support">Contact support</a>
-            </aside>
-        </section>
-        </section>
-
-    </main>
-</app-live-feed-sender>
+<div class="app-live-feed-sender">
+  <header>
+    <h1>Camera</h1>
+    <h2>Fill the details to enable</h2>
+  </header>
+  <main>
+    <section>
+      <form #liveForm="ngForm" novalidate (ngSubmit)="onSubmit(liveForm)">
+        <!-- First Name field -->
+        <div class="form-group">
+          <label>
+            First Name
+            <input
+              name="firstName"
+              id="firstName"
+              [(ngModel)]="form.firstName"
+              required
+              minlength="3"
+              maxlength="10"
+              #firstName="ngModel"
+            />
+          </label>
+          <div
+            class="error-state"
+            *ngIf="firstName.touched && firstName.invalid"
+            role="alert"
+            id="error-message"
+          >
+            <small *ngIf="firstName.errors?.['minlength']"> Must be at least 3 characters.</small>
+            <small *ngIf="firstName.errors?.['maxlength']">
+              Cannot be more than 10 characters.</small>
+            
+            <small *ngIf="firstName.errors?.['required']"> First Name is Required.</small>
+          </div>
+        </div>
+        <!-- Last Name field -->
+        <div class="form-group">
+          <label>
+            Last Name
+            <input
+              name="lastName"
+              id="lastName"
+              [(ngModel)]="form.lastName"
+              required
+              minlength="3"
+              maxlength="10"
+              #lastName="ngModel"
+            />
+          </label>
+          <div
+            class="error-state"
+            *ngIf="lastName.touched && lastName.invalid"
+            role="alert"
+            id="error-message"
+          >
+            <small *ngIf="lastName.errors?.['minlength']"> Must be at least 3 characters.</small>
+            <small *ngIf="lastName.errors?.['maxlength']">
+              Cannot be more than 10 characters.</small>
+            
+            <small *ngIf="lastName.errors?.['required']"> First Name is Required.</small>
+          </div>
+        </div>
+        <!-- Greeting Message Field -->
+        <div class="form-group">
+          <label>
+            Your Message
+            <input
+              name="greetMessage"
+              id="greetMessage"
+              [(ngModel)]="form.greetMessage"
+              required
+              minlength="3"
+              maxlength="1024"
+              #greetingCtrl="ngModel"
+            />
+          </label>
+          <div
+            class="error-state"
+            *ngIf="greetingCtrl.touched && greetingCtrl.invalid"
+            role="alert"
+            id="error-message"
+          >
+            <small *ngIf="greetingCtrl.errors?.['minlength']">
+              Must be at least 3 characters.</small>
+            
+            <small *ngIf="greetingCtrl.errors?.['maxlength']">
+              Cannot be more than 1024 characters.</small>
+            
+            <small *ngIf="greetingCtrl.errors?.['required']">Greeting message is Required.</small>
+          </div>
+        </div>
+        <!-- Form control buttons -->
+        <div class="control-group">
+          <button
+            type="submit"
+            [disabled]="liveForm.pending || liveForm.invalid"
+            class="btn-primary"
+            aria-label="Start Live Feed"
+           
+          >
+            Start
+          </button>
+          <button
+            type="reset"
+            [disabled]="!liveForm.touched"
+            class="btn-primary"
+            aria-label="Clear form"
+          >
+            Clear
+          </button>
+          <button
+            type="button"
+            (click)="autoPopulate()"
+            class="btn-primary"
+            aria-label="autocomplete form"
+          >
+            Auto Popuplate
+          </button>
+        </div>
+      </form>
+      <!-- Additional help -->
+      <aside id="login-help" class="help-section">
+        <!-- Need help? <a href="/support">Contact support</a> -->
+      </aside>
+    </section>
+  </main>
+</div>

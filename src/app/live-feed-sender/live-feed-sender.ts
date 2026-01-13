@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-@Component({
-  selector: 'app-live-feed-sender',
-  imports: [FormsModule],
-  templateUrl: './live-feed-sender.html',
-  styleUrl: './live-feed-sender.scss',
-})
+import { CommonModule } from '@angular/common';
+
+
+
 
 interface formFields {
 
@@ -15,11 +13,16 @@ interface formFields {
   submittedForm: boolean
 
 }
-
+@Component({
+  selector: 'app-live-feed-sender',
+  imports: [FormsModule,CommonModule],
+  templateUrl: './live-feed-sender.html',
+  styleUrl: './live-feed-sender.scss',
+})
 export class LiveFeedSender {
 
   constructor() { }
-  private form:formFields={
+   form:formFields={
     firstName: '',
     lastName: '',
     greetMessage: '',
@@ -27,10 +30,12 @@ export class LiveFeedSender {
 
   }
 
-  autoPopulate()
+  autoPopulate(){
+
+  }
   onSubmit(submittedForm: NgForm) {
     this.form.submittedForm = true;
-    console.log("loggging and changing firstname", this.firstName);
-    form.controls['firstName'].setValue("changed " + this.firstName)
+    console.log("loggging the form data", this.form);
+   
   }
 }
