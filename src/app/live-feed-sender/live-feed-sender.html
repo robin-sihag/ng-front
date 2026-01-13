@@ -89,6 +89,19 @@
             <small *ngIf="greetingCtrl.errors?.['required']">Greeting message is Required.</small>
           </div>
         </div>
+           <!-- Remember Me -->
+    <div class="form-group checkbox-group">
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          id="rememberMe"
+          name="rememberMe"
+          [(ngModel)]="form.rememberMe"
+          #rememberCtrl="ngModel"
+        />
+        <span>Remember me</span>
+      </label>
+    </div>
         <!-- Form control buttons -->
         <div class="control-group">
           <button

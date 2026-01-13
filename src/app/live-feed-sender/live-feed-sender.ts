@@ -10,7 +10,7 @@ interface formFields {
   firstName: string
   lastName: string
   greetMessage: string
-  submittedForm: boolean
+  rememberMe: boolean
 
 }
 @Component({
@@ -26,7 +26,7 @@ export class LiveFeedSender {
     firstName: '',
     lastName: '',
     greetMessage: '',
-    submittedForm:false,
+    rememberMe:false,
 
   }
 
@@ -34,7 +34,6 @@ export class LiveFeedSender {
 
   }
   onSubmit(submittedForm: NgForm) {
-    this.form.submittedForm = true;
     console.log("loggging the form data", this.form);
    
   }
